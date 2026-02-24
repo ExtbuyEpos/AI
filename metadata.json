@@ -1,5 +1,5 @@
 {
-  "name": "PicoClaw - Instant Embedded Setup",
-  "description": "A high-performance landing page for PicoClaw, featuring real-time AI text and voice capabilities.",
-  "requestFramePermissions": ["microphone"]
+  "name": "Ai Future - The Ultimate All-in-One AI",
+  "description": "A futuristic AI platform for voice, video, generation, trading, and global problem solving.",
+  "requestFramePermissions": ["microphone", "camera", "geolocation"]
 }
