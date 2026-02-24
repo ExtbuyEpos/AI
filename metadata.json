@@ -1,0 +1,5 @@
+{
+  "name": "PicoClaw - Instant Embedded Setup",
+  "description": "A high-performance landing page for PicoClaw, featuring real-time AI text and voice capabilities.",
+  "requestFramePermissions": ["microphone"]
+}
