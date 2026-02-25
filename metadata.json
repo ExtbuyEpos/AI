@@ -1,5 +1,5 @@
 {
-  "name": "PicoClaw AI - Instant Embedded Intelligence",
-  "description": "The one-click AI and Docker setup tool for Sipeed hardware.",
+  "name": "HUMAN AI - Neural Intelligence Platform",
+  "description": "The high-bandwidth neural intelligence platform for human-centric AI deployment.",
   "requestFramePermissions": ["microphone", "camera"]
 }

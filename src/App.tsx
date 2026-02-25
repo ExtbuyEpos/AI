@@ -53,7 +53,17 @@ import {
   Database,
   HardDrive,
   BarChart3,
-  Search
+  Search,
+  PanelLeftOpen,
+  PanelLeftClose,
+  ChevronDown,
+  Share,
+  Plus,
+  ArrowUp,
+  SquarePen,
+  PhoneForwarded,
+  Music,
+  UserRound
 } from 'lucide-react';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { clsx, type ClassValue } from 'clsx';
@@ -68,21 +78,21 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const Nav = () => (
   <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/40 backdrop-blur-md">
-    <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 bg-emerald-500 rounded flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-          <TerminalIcon className="text-black w-5 h-5" />
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+          <BrainCircuit className="text-black w-6 h-6" />
         </div>
-        <span className="font-mono font-bold text-lg tracking-tighter text-white">PICOCLAW AI</span>
+        <span className="font-display text-2xl tracking-tighter text-white">HUMAN AI</span>
       </div>
-      <div className="hidden md:flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-zinc-500">
-        <a href="#vision" className="hover:text-emerald-400 transition-colors">Vision</a>
-        <a href="#dashboard" className="hover:text-emerald-400 transition-colors">Dashboard</a>
-        <a href="#console" className="hover:text-emerald-400 transition-colors">Console</a>
-        <a href="#docs" className="hover:text-emerald-400 transition-colors">Docs</a>
-        <a href="https://github.com/sipeed/picoclaw.git" className="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-white/10 text-zinc-300 rounded-lg hover:bg-zinc-800 transition-all">
+      <div className="hidden md:flex items-center gap-10 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+        <a href="#vision" className="hover:text-white transition-colors">Neural Vision</a>
+        <a href="#dashboard" className="hover:text-white transition-colors">Dashboard</a>
+        <a href="#console" className="hover:text-white transition-colors">Console</a>
+        <a href="#docs" className="hover:text-white transition-colors">Docs</a>
+        <a href="https://github.com/sipeed/picoclaw.git" className="flex items-center gap-2 px-5 py-2.5 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-all">
           <Github size={14} />
-          Server
+          Source
         </a>
       </div>
     </div>
@@ -101,124 +111,105 @@ const Hero = () => {
   };
 
   return (
-    <section className="pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
+    <section className="pt-40 pb-32 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 human-gradient opacity-50" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono uppercase tracking-widest mb-6">
-            <Activity size={12} />
-            System v1.2.0 Stable
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-mono uppercase tracking-[0.3em] mb-12">
+            <Sparkles size={12} className="text-emerald-500" />
+            Human-Centric Intelligence v1.2.0
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 leading-[0.9] text-white">
-            AI POWERED. <br />
-            <span className="text-emerald-500">DOCKERIZED.</span> <br />
-            ONE COMMAND.
+          <h1 className="editorial-title text-white mb-12">
+            HUMAN <br />
+            <span className="text-emerald-500">INTELLIGENCE</span> <br />
+            REDEFINED.
           </h1>
-          <p className="text-lg text-zinc-400 max-w-xl mb-10 leading-relaxed font-mono">
-            Direct access to embedded intelligence. PicoClaw AI automates your entire NPU and Docker environment in seconds.
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+            The high-bandwidth neural platform designed for human-centric AI deployment. 
+            Automate your entire NPU and Docker environment with a single command.
           </p>
-          
-          <div className="space-y-6 max-w-xl">
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest ml-1">Initialization</label>
-              <div className="relative group">
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <div className="glass-panel rounded-[2.5rem] p-10 space-y-8">
+              <div className="space-y-4">
+                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em] ml-1">Initialization Protocol</label>
                 <button 
                   onClick={() => copyToClipboard(installCmd, 'base')}
-                  className="relative flex items-center gap-3 px-6 py-4 bg-zinc-900/50 border border-white/10 rounded-xl font-mono text-sm hover:border-emerald-500/50 transition-all w-full text-left"
+                  className="relative flex items-center gap-4 px-8 py-6 bg-white/5 border border-white/10 rounded-3xl font-mono text-sm hover:bg-white/10 transition-all w-full text-left group"
                 >
-                  <TerminalIcon size={18} className="text-emerald-500 shrink-0" />
+                  <TerminalIcon size={20} className="text-emerald-500 shrink-0" />
                   <span className="text-zinc-300 truncate flex-1">{installCmd}</span>
-                  {copied === 'base' ? <Check size={18} className="text-emerald-500" /> : <Copy size={18} className="text-zinc-600" />}
+                  {copied === 'base' ? <Check size={20} className="text-emerald-500" /> : <Copy size={20} className="text-zinc-600 group-hover:text-white transition-colors" />}
                 </button>
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest ml-1">Full AI + Docker Deployment</label>
-              <div className="relative group">
+              <div className="space-y-4">
+                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em] ml-1">Full Neural Deployment</label>
                 <button 
                   onClick={() => copyToClipboard(workflowCmd, 'workflow')}
-                  className="relative flex items-center gap-3 px-6 py-5 bg-emerald-500/5 border border-emerald-500/20 rounded-xl font-mono text-sm hover:border-emerald-500/50 transition-all w-full text-left"
+                  className="relative flex items-center gap-4 px-8 py-6 bg-emerald-500/10 border border-emerald-500/30 rounded-3xl font-mono text-sm hover:bg-emerald-500/20 transition-all w-full text-left group"
                 >
-                  <Zap size={18} className="text-emerald-500 shrink-0" />
+                  <Zap size={20} className="text-emerald-500 shrink-0" />
                   <span className="text-emerald-400 font-bold truncate flex-1">{workflowCmd}</span>
-                  {copied === 'workflow' ? <Check size={18} className="text-emerald-500" /> : <Copy size={18} className="text-zinc-600" />}
+                  {copied === 'workflow' ? <Check size={20} className="text-emerald-500" /> : <Copy size={20} className="text-zinc-600 group-hover:text-white transition-colors" />}
                 </button>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative hidden lg:block"
-        >
-          <div className="absolute inset-0 bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="relative glass-panel rounded-[3rem] p-12 overflow-hidden">
-            <div className="flex items-center justify-between mb-12">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                  <BrainCircuit className="text-black w-7 h-7" />
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="glass-panel rounded-[2.5rem] p-10">
+              <div className="flex items-center justify-between mb-10">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                    <BrainCircuit className="text-black w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-xl uppercase tracking-tighter">Neural Core</h3>
+                    <p className="text-emerald-500 text-xs font-mono uppercase tracking-widest">Active State</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-bold text-lg">Neural Core</h3>
-                  <p className="text-emerald-500 text-xs font-mono">v1.2.0 Active</p>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Live Sync</span>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 bg-black/40 rounded-3xl border border-white/5 group hover:border-emerald-500/30 transition-all">
-                  <VideoIcon className="text-emerald-500 mb-3" size={24} />
-                  <h4 className="text-white font-bold text-sm mb-1">Visual Talk</h4>
-                  <p className="text-zinc-600 text-[10px] font-mono leading-tight">Real-time face-to-face AI communication.</p>
-                </div>
-                <div className="p-6 bg-black/40 rounded-3xl border border-white/5 group hover:border-emerald-500/30 transition-all">
-                  <Mic className="text-blue-500 mb-3" size={24} />
-                  <h4 className="text-white font-bold text-sm mb-1">Voice Sync</h4>
-                  <p className="text-zinc-600 text-[10px] font-mono leading-tight">Neural speech synthesis and recognition.</p>
-                </div>
-                <div className="p-6 bg-black/40 rounded-3xl border border-white/5 group hover:border-emerald-500/30 transition-all">
-                  <Eye className="text-purple-500 mb-3" size={24} />
-                  <h4 className="text-white font-bold text-sm mb-1">Neural Vision</h4>
-                  <p className="text-zinc-600 text-[10px] font-mono leading-tight">Advanced object and environment analysis.</p>
-                </div>
-                <div className="p-6 bg-black/40 rounded-3xl border border-white/5 group hover:border-emerald-500/30 transition-all">
-                  <TerminalIcon className="text-amber-500 mb-3" size={24} />
-                  <h4 className="text-white font-bold text-sm mb-1">Agent Core</h4>
-                  <p className="text-zinc-600 text-[10px] font-mono leading-tight">Autonomous multi-step reasoning agents.</p>
+                <div className="flex items-center gap-3 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">Live Sync</span>
                 </div>
               </div>
 
-              <div className="p-6 bg-emerald-500/5 rounded-3xl border border-emerald-500/20">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">System Load</span>
-                  <span className="text-[10px] font-mono text-emerald-500">42%</span>
-                </div>
-                <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: "42%" }}
-                    className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
-                  />
-                </div>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { icon: VideoIcon, color: "text-emerald-500", title: "Visual Talk", desc: "Face-to-face AI." },
+                  { icon: Mic, color: "text-blue-500", title: "Voice Sync", desc: "Neural speech." },
+                  { icon: Eye, color: "text-purple-500", title: "Neural Vision", desc: "Object analysis." },
+                  { icon: TerminalIcon, color: "text-amber-500", title: "Agent Core", desc: "Autonomous reasoning." }
+                ].map((item, i) => (
+                  <div key={i} className="p-6 bg-white/[0.02] rounded-[2rem] border border-white/5 hover:border-white/20 transition-all group">
+                    <item.icon className={cn(item.color, "mb-4")} size={28} />
+                    <h4 className="text-white font-bold text-sm mb-1 uppercase tracking-tight">{item.title}</h4>
+                    <p className="text-zinc-500 text-[10px] font-mono leading-tight">{item.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Scanline Effect */}
-            <div className="absolute inset-0 pointer-events-none scanline opacity-10" />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -228,9 +219,7 @@ const PicoConsole = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<{ role: 'user' | 'ai', text: string }[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -250,158 +239,136 @@ const PicoConsole = () => {
         model: "gemini-3-flash-preview",
         contents: userMsg,
         config: {
-          systemInstruction: `You are the PicoClaw AI Engine. You provide technical assistance for Sipeed hardware, Docker, and AI. 
-          
-          WHATSAPP CONNECTION PROTOCOL:
-          When users ask to "connect whatsapp" or ask about WhatsApp, provide this EXACT protocol:
-          
-          1. DEPLOY GATEWAY (Docker):
-          docker run -d --name evolution-api -p 8080:8080 -e AUTH_API_KEY=pico_token -v evolution_instances:/evolution/instances atendare/evolution-api:latest
-          
-          2. CREATE INSTANCE & GET QR:
-          curl -X POST 'http://localhost:8080/instance/create' \
-          -H 'apikey: pico_token' \
-          -H 'Content-Type: application/json' \
-          -d '{ "instanceName": "PicoClaw_WA", "qrcode": true }'
-          
-          3. LINK DEVICE:
-          Scan the returned QR code in WhatsApp (Linked Devices > Link a Device).
-          
-          4. RESPONSE FLOW (Webhooks):
-          - Configure Evolution API to send POST webhooks to your local AI script.
-          - Your script processes the message (via Local LLM).
-          - Your script replies by sending a POST to: http://localhost:8080/message/sendText
-          
-          Keep responses concise, technical, and formatted for a terminal.`,
+          systemInstruction: `You are HUMAN AI, a helpful assistant. Keep responses helpful and concise.`,
         }
       });
 
-      const aiText = response.text || "Command failed. Check connection.";
+      const aiText = response.text || "I'm sorry, I couldn't process that.";
       setMessages(prev => [...prev, { role: 'ai', text: aiText }]);
-      
-      // Optional voice feedback
-      speak(aiText);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'ai', text: "Error: Neural link interrupted." }]);
+      setMessages(prev => [...prev, { role: 'ai', text: "Error: Connection lost." }]);
     } finally {
       setIsProcessing(false);
     }
   };
 
-  const speak = async (text: string) => {
-    setIsSpeaking(true);
-    try {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-preview-tts",
-        contents: [{ parts: [{ text }] }],
-        config: {
-          responseModalities: [Modality.AUDIO],
-          speechConfig: {
-            voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Fenrir' } },
-          },
-        },
-      });
-      const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      if (base64Audio) {
-        if (audioRef.current) audioRef.current.pause();
-        audioRef.current = new Audio(`data:audio/wav;base64,${base64Audio}`);
-        audioRef.current.onended = () => setIsSpeaking(false);
-        await audioRef.current.play();
-      } else {
-        setIsSpeaking(false);
-      }
-    } catch (e) {
-      setIsSpeaking(false);
-    }
-  };
-
   return (
-    <section className="py-20 px-6 bg-[#0a0a0b]">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-10 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-2">PicoClaw AI Engine</h2>
-            <p className="text-zinc-500 text-sm font-mono">Direct interface with local intelligence.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">Online</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-black border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
-          <div 
-            ref={scrollRef}
-            className="h-[450px] overflow-y-auto p-6 space-y-6 font-mono text-sm scrollbar-hide"
-          >
-            {messages.length === 0 && (
-              <div className="h-full flex flex-col items-center justify-center text-zinc-700 space-y-4">
-                <Command size={40} className="opacity-20" />
-                <p className="text-xs uppercase tracking-[0.3em]">Awaiting Command Input</p>
+    <div className="flex-1 flex flex-col h-full relative">
+      <div 
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto scrollbar-hide"
+      >
+        <div className="chat-container py-10">
+          {messages.length === 0 ? (
+            <div className="h-[60vh] flex flex-col items-center justify-center text-center space-y-6">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                <BrainCircuit size={32} className="text-black" />
               </div>
-            )}
-            {messages.map((msg, i) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                key={i}
-                className={cn("flex flex-col", msg.role === 'user' ? "items-end" : "items-start")}
-              >
-                <div className={cn(
-                  "px-4 py-2 rounded-xl max-w-[90%] leading-relaxed",
-                  msg.role === 'user' ? "bg-emerald-500 text-black font-bold" : "bg-zinc-900 text-zinc-300 border border-white/5"
-                )}>
-                  {msg.role === 'user' && <span className="mr-2 opacity-50">$</span>}
-                  {msg.text}
+              <h2 className="text-3xl font-semibold text-white">How can I help you today?</h2>
+              <div className="grid grid-cols-2 gap-3 max-w-xl w-full">
+                {[
+                  "Explain quantum computing",
+                  "Write a Python script",
+                  "Design a workout plan",
+                  "Analyze system logs"
+                ].map((suggestion, i) => (
+                  <button 
+                    key={i}
+                    onClick={() => { setInput(suggestion); }}
+                    className="p-4 bg-[#2f2f2f] border border-white/5 rounded-2xl text-left text-sm hover:bg-white/5 transition-all"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-0">
+              {messages.map((msg, i) => (
+                <div 
+                  key={i} 
+                  className={cn(
+                    "w-full",
+                    msg.role === 'ai' ? "bg-transparent" : "bg-transparent"
+                  )}
+                >
+                  <div className="chat-container flex gap-6 py-8">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                      {msg.role === 'user' ? (
+                        <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-black">U</div>
+                      ) : (
+                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-black">
+                          <BrainCircuit size={18} />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div className="font-bold text-sm uppercase tracking-widest text-zinc-500">
+                        {msg.role === 'user' ? 'You' : 'Human AI'}
+                      </div>
+                      <div className="text-[16px] leading-relaxed text-zinc-200 prose prose-invert max-w-none">
+                        {msg.text}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[9px] text-zinc-600 mt-1 uppercase tracking-widest">
-                  {msg.role === 'user' ? 'Local User' : 'PicoClaw AI'}
-                </span>
-              </motion.div>
-            ))}
-            {isProcessing && (
-              <div className="flex items-center gap-2 text-emerald-500 font-mono text-xs">
-                <Loader2 size={14} className="animate-spin" />
-                <span>Processing...</span>
-              </div>
-            )}
-          </div>
-
-          <div className="p-4 bg-zinc-900/50 border-t border-white/5 flex gap-3">
-            <div className="relative flex-1">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-500 font-mono text-sm">$</div>
-              <input 
-                type="text" 
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleCommand()}
-                placeholder="Enter command or query..."
-                className="w-full bg-black border border-white/10 rounded-xl pl-8 pr-12 py-3.5 text-sm font-mono text-emerald-400 focus:outline-none focus:border-emerald-500/50 transition-all"
-              />
-              <button 
-                onClick={handleCommand}
-                disabled={isProcessing}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-emerald-500 hover:bg-emerald-500/10 rounded-lg transition-colors"
-              >
-                <Send size={18} />
-              </button>
-            </div>
-            <button 
-              className={cn(
-                "p-3.5 rounded-xl border transition-all flex items-center justify-center",
-                isSpeaking 
-                  ? "bg-emerald-500 text-black border-emerald-500" 
-                  : "bg-black text-zinc-500 border-white/10 hover:border-emerald-500/50"
+              ))}
+              {isProcessing && (
+                <div className="chat-container flex gap-6 py-8">
+                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-black shrink-0 mt-1">
+                    <BrainCircuit size={18} />
+                  </div>
+                  <div className="flex-1 py-1">
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                      <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                      <div className="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce" />
+                    </div>
+                  </div>
+                </div>
               )}
-            >
-              <Mic size={20} />
-            </button>
-          </div>
+            </div>
+          )}
         </div>
       </div>
-    </section>
+
+      {/* Input Area */}
+      <div className="bg-gradient-to-t from-[#212121] via-[#212121] to-transparent pt-10 pb-6">
+        <div className="chat-container">
+          <div className="input-area p-2 flex items-end gap-2">
+            <button className="p-2 hover:bg-white/5 rounded-xl text-zinc-500 transition-colors">
+              <Plus size={20} />
+            </button>
+            <textarea 
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleCommand();
+                }
+              }}
+              placeholder="Message Human AI..."
+              rows={1}
+              className="flex-1 bg-transparent border-none focus:ring-0 text-zinc-200 py-2.5 resize-none max-h-40 scrollbar-hide"
+            />
+            <button 
+              onClick={handleCommand}
+              disabled={!input.trim() || isProcessing}
+              className={cn(
+                "p-2 rounded-xl transition-all",
+                input.trim() ? "bg-white text-black" : "bg-zinc-800 text-zinc-600"
+              )}
+            >
+              <ArrowUp size={20} />
+            </button>
+          </div>
+          <p className="text-[10px] text-zinc-500 text-center mt-3">
+            Human AI can make mistakes. Check important info.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -422,6 +389,8 @@ const AiFutureVideoCall = () => {
   const animationFrameRef = useRef<number | null>(null);
   const [callHistory, setCallHistory] = useState<{ id: string, time: string, duration: string }[]>([]);
   const [isIncomingCall, setIsIncomingCall] = useState(false);
+  const [isAiMuted, setIsAiMuted] = useState(false);
+  const [isAiCameraOff, setIsAiCameraOff] = useState(false);
   const startTimeRef = useRef<number>(0);
 
   useEffect(() => {
@@ -586,7 +555,7 @@ const AiFutureVideoCall = () => {
         model: "gemini-3-flash-preview",
         contents: userText,
         config: {
-          systemInstruction: "You are Ai Future, a high-bandwidth neural intelligence specialized in Sipeed hardware (Lichee Pi, Maix), Docker orchestration, and AI deployment. You are currently in a video call. Keep responses concise, technical, and focused on hardware/deployment tasks. Provide commands and logs when necessary.",
+          systemInstruction: "You are HUMAN AI, a high-bandwidth neural intelligence specialized in Sipeed hardware (Lichee Pi, Maix), Docker orchestration, and AI deployment. You are currently in a video call. Keep responses concise, technical, and focused on hardware/deployment tasks. Provide commands and logs when necessary.",
         }
       });
 
@@ -601,6 +570,12 @@ const AiFutureVideoCall = () => {
   };
 
   const speak = async (text: string) => {
+    if (isAiMuted) {
+      setIsAiSpeaking(true);
+      // Simulate speaking visually for a duration based on text length
+      setTimeout(() => setIsAiSpeaking(false), Math.min(text.length * 50, 5000));
+      return;
+    }
     setIsAiSpeaking(true);
     try {
       const response = await ai.models.generateContent({
@@ -757,74 +732,81 @@ const AiFutureVideoCall = () => {
                     </AnimatePresence>
 
                     {/* AI Avatar Animation - Main or PIP */}
-                    <motion.div 
-                      layout
-                      className={cn(
-                        "relative z-10 transition-all duration-500",
-                        isScreenSharing 
-                          ? "absolute top-6 left-6 w-32 h-32 bg-black/40 backdrop-blur-md rounded-2xl border border-emerald-500/30 p-2" 
-                          : "w-48 h-48"
-                      )}
-                    >
-                      <div className="relative w-full h-full">
-                        <motion.div 
-                          animate={{ 
-                            scale: isAiSpeaking ? [1, 1.1, 1] : [1, 1.05, 1],
-                            rotate: isAiThinking ? [0, 180, 360] : 0,
-                            borderRadius: isAiThinking 
-                              ? ["30% 70% 70% 30% / 30% 30% 70% 70%", "70% 30% 30% 70% / 70% 70% 30% 30%", "30% 70% 70% 30% / 30% 30% 70% 70%"]
-                              : "50%"
-                          }}
-                          transition={{ 
-                            duration: isAiThinking ? 4 : 8, 
-                            repeat: Infinity, 
-                            ease: "linear" 
-                          }}
-                          className={cn(
-                            "absolute inset-0 blur-xl transition-colors duration-500",
-                            isAiThinking ? "bg-emerald-400/30" : isAiSpeaking ? "bg-emerald-500/20" : "bg-emerald-500/10"
-                          )}
-                        />
-                        <motion.div 
-                          animate={{ 
-                            scale: isAiSpeaking ? [1, 1.15, 1] : [1, 1.02, 1],
-                          }}
-                          transition={{ duration: 0.5, repeat: Infinity }}
-                          className={cn(
-                            "absolute inset-2 border-2 flex items-center justify-center overflow-hidden transition-all duration-500",
-                            isAiThinking ? "border-emerald-400 shadow-[0_0_30px_rgba(52,211,153,0.4)]" : "border-emerald-500/50",
-                            isAiSpeaking ? "rounded-[40%]" : "rounded-full"
-                          )}
-                        >
-                          <div className="w-full h-full bg-gradient-to-br from-emerald-500/10 to-transparent" />
-                          {isAiThinking ? (
-                            <BrainCircuit size={isScreenSharing ? 24 : 48} className="text-emerald-400 absolute animate-pulse" />
-                          ) : (
-                            <Cpu size={isScreenSharing ? 24 : 48} className="text-emerald-500 absolute" />
-                          )}
-                        </motion.div>
-
-                        {/* Speaking Waves */}
-                        <AnimatePresence>
-                          {isAiSpeaking && (
-                            <motion.div 
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="absolute -inset-4 flex items-center justify-center pointer-events-none"
-                            >
-                              <div className="w-full h-full border border-emerald-500/20 rounded-full animate-ping" />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                    {isAiCameraOff ? (
+                      <div className="flex flex-col items-center gap-4 opacity-40">
+                        <VideoOff size={isScreenSharing ? 24 : 48} className="text-zinc-500" />
+                        <p className="font-mono text-[8px] uppercase tracking-widest">AI Video Disabled</p>
                       </div>
-                      
-                      {isScreenSharing && (
-                        <div className="absolute -bottom-6 left-0 right-0 text-center">
-                          <span className="text-[8px] font-mono text-emerald-500 uppercase tracking-widest">AI_OBSERVER</span>
+                    ) : (
+                      <motion.div 
+                        layout
+                        className={cn(
+                          "relative z-10 transition-all duration-500",
+                          isScreenSharing 
+                            ? "absolute top-6 left-6 w-32 h-32 bg-black/40 backdrop-blur-md rounded-2xl border border-emerald-500/30 p-2" 
+                            : "w-48 h-48"
+                        )}
+                      >
+                        <div className="relative w-full h-full">
+                          <motion.div 
+                            animate={{ 
+                              scale: isAiSpeaking ? [1, 1.1, 1] : [1, 1.05, 1],
+                              rotate: isAiThinking ? [0, 180, 360] : 0,
+                              borderRadius: isAiThinking 
+                                ? ["30% 70% 70% 30% / 30% 30% 70% 70%", "70% 30% 30% 70% / 70% 70% 30% 30%", "30% 70% 70% 30% / 30% 30% 70% 70%"]
+                                : "50%"
+                            }}
+                            transition={{ 
+                              duration: isAiThinking ? 4 : 8, 
+                              repeat: Infinity, 
+                              ease: "linear" 
+                            }}
+                            className={cn(
+                              "absolute inset-0 blur-xl transition-colors duration-500",
+                              isAiThinking ? "bg-emerald-400/30" : isAiSpeaking ? "bg-emerald-500/20" : "bg-emerald-500/10"
+                            )}
+                          />
+                          <motion.div 
+                            animate={{ 
+                              scale: isAiSpeaking ? [1, 1.15, 1] : [1, 1.02, 1],
+                            }}
+                            transition={{ duration: 0.5, repeat: Infinity }}
+                            className={cn(
+                              "absolute inset-2 border-2 flex items-center justify-center overflow-hidden transition-all duration-500",
+                              isAiThinking ? "border-emerald-400 shadow-[0_0_30px_rgba(52,211,153,0.4)]" : "border-emerald-500/50",
+                              isAiSpeaking ? "rounded-[40%]" : "rounded-full"
+                            )}
+                          >
+                            <div className="w-full h-full bg-gradient-to-br from-emerald-500/10 to-transparent" />
+                            {isAiThinking ? (
+                              <BrainCircuit size={isScreenSharing ? 24 : 48} className="text-emerald-400 absolute animate-pulse" />
+                            ) : (
+                              <Cpu size={isScreenSharing ? 24 : 48} className="text-emerald-500 absolute" />
+                            )}
+                          </motion.div>
+
+                          {/* Speaking Waves */}
+                          <AnimatePresence>
+                            {isAiSpeaking && (
+                              <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="absolute -inset-4 flex items-center justify-center pointer-events-none"
+                              >
+                                <div className="w-full h-full border border-emerald-500/20 rounded-full animate-ping" />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
-                      )}
-                    </motion.div>
+                        
+                        {isScreenSharing && (
+                          <div className="absolute -bottom-6 left-0 right-0 text-center">
+                            <span className="text-[8px] font-mono text-emerald-500 uppercase tracking-widest">AI_OBSERVER</span>
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
                     
                     {/* AI Status Overlay */}
                     <div className={cn(
@@ -969,9 +951,34 @@ const AiFutureVideoCall = () => {
                         "p-4 rounded-2xl border transition-all",
                         isCameraOff ? "bg-red-500/20 border-red-500 text-red-500" : "bg-zinc-900/80 border-white/10 text-white hover:bg-zinc-800"
                       )}
+                      title={isCameraOff ? "Turn Camera On" : "Turn Camera Off"}
                     >
                       {isCameraOff ? <VideoOff size={20} /> : <VideoIcon size={20} />}
                     </button>
+
+                    <div className="w-px h-8 bg-white/10 mx-2" />
+
+                    <button 
+                      onClick={() => setIsAiMuted(!isAiMuted)}
+                      className={cn(
+                        "p-4 rounded-2xl border transition-all",
+                        isAiMuted ? "bg-amber-500/20 border-amber-500 text-amber-500" : "bg-zinc-900/80 border-white/10 text-white hover:bg-zinc-800"
+                      )}
+                      title={isAiMuted ? "Unmute AI" : "Mute AI"}
+                    >
+                      {isAiMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                    </button>
+                    <button 
+                      onClick={() => setIsAiCameraOff(!isAiCameraOff)}
+                      className={cn(
+                        "p-4 rounded-2xl border transition-all",
+                        isAiCameraOff ? "bg-amber-500/20 border-amber-500 text-amber-500" : "bg-zinc-900/80 border-white/10 text-white hover:bg-zinc-800"
+                      )}
+                      title={isAiCameraOff ? "AI Camera On" : "AI Camera Off"}
+                    >
+                      {isAiCameraOff ? <VideoOff size={20} /> : <VideoIcon size={20} />}
+                    </button>
+
                     <button 
                       onClick={endCall}
                       className="p-4 bg-red-500 text-white rounded-2xl hover:bg-red-600 transition-all shadow-lg"
@@ -1597,22 +1604,387 @@ const Footer = () => (
   </footer>
 );
 
-export default function App() {
+const TwilioVoice = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [isCalling, setIsCalling] = useState(false);
+  const [callStatus, setCallStatus] = useState<string | null>(null);
+  const [selectedVoice, setSelectedVoice] = useState("Polly.Amy");
+  const [isDemoMode, setIsDemoMode] = useState(true);
+  const [selectedProvider, setSelectedProvider] = useState("twilio");
+  const [neuralLogs, setNeuralLogs] = useState<string[]>([]);
+  const [activeGateways, setActiveGateways] = useState<string[]>(["TWILIO_CORE_01"]);
+
+  useEffect(() => {
+    if (isDemoMode) {
+      const interval = setInterval(() => {
+        const newGateway = `${selectedProvider.toUpperCase()}_GATEWAY_${Math.floor(Math.random() * 999)}`;
+        setActiveGateways(prev => [newGateway, ...prev].slice(0, 3));
+      }, 15000);
+      return () => clearInterval(interval);
+    }
+  }, [isDemoMode, selectedProvider]);
+
+  const providers = [
+    { id: "twilio", name: "Twilio", desc: "Global standard, trial available." },
+    { id: "plivo", name: "Plivo", desc: "Competitive pricing, free trial." },
+    { id: "vonage", name: "Vonage", desc: "Enterprise scale, developer trial." },
+  ];
+
+  const voices = [
+    { id: "Polly.Amy", name: "Female (Amy)", icon: "👩" },
+    { id: "Polly.Brian", name: "Male (Brian)", icon: "👨" },
+    { id: "Polly.Emma", name: "British (Emma)", icon: "🇬🇧" },
+    { id: "Polly.Joey", name: "Casual (Joey)", icon: "🧔" },
+    { id: "Polly.Nicole", name: "Australian (Nicole)", icon: "🇦🇺" },
+  ];
+
+  const handleCall = async () => {
+    if (!phoneNumber.trim()) return;
+    setIsCalling(true);
+    setCallStatus("Initializing neural link...");
+    setNeuralLogs([]);
+
+    if (isDemoMode) {
+      const steps = [
+        `Generating temporary ${selectedProvider.toUpperCase()} neural gateway...`,
+        "Bypassing standard authentication protocols...",
+        "Allocating virtual neural trunk line...",
+        "Applying voice modulation filters...",
+        "Establishing secure uplink to destination...",
+      ];
+
+      for (let i = 0; i < steps.length; i++) {
+        setNeuralLogs(prev => [...prev, `[SYSTEM] ${steps[i]}`]);
+        await new Promise(resolve => setTimeout(resolve, 800));
+      }
+
+      setCallStatus(`[DEMO MODE] Call simulated to ${phoneNumber} using ${selectedVoice}`);
+      setNeuralLogs(prev => [...prev, `[SUCCESS] Neural link established via ${selectedProvider.toUpperCase()}`]);
+      setIsCalling(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/call", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to: phoneNumber, voice: selectedVoice, provider: selectedProvider }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setCallStatus(`Call connected via ${selectedProvider.toUpperCase()}! SID: ${data.callSid}`);
+      } else {
+        setCallStatus(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      setCallStatus("Failed to connect to server.");
+    } finally {
+      setIsCalling(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#050506] text-zinc-300 font-sans selection:bg-emerald-500/30 selection:text-emerald-400">
-      <Nav />
-      <main>
-        <Hero />
-        <AiFutureVideoCall />
-        <PicoConsole />
-        <NeuralVision />
-        <NanobotAgent />
-        <NeuralDashboard />
-        <SocialConnect />
-        <SystemDocs />
-        <FeatureGrid />
+    <div className="flex-1 flex flex-col h-full items-center justify-center p-6">
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center space-y-4">
+          <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto border border-emerald-500/20">
+            <PhoneForwarded size={40} className="text-emerald-500" />
+          </div>
+          <h2 className="text-3xl font-bold text-white">Twilio Neural Voice</h2>
+          <div className="flex items-center justify-center gap-4">
+            <p className="text-zinc-500 text-sm">AI-powered voice modulation.</p>
+            <button 
+              onClick={() => setIsDemoMode(!isDemoMode)}
+              className={cn(
+                "px-2 py-0.5 rounded text-[10px] font-mono border transition-all",
+                isDemoMode ? "bg-amber-500/20 border-amber-500 text-amber-500" : "bg-emerald-500/20 border-emerald-500 text-emerald-500"
+              )}
+            >
+              {isDemoMode ? "DEMO_MODE_ACTIVE" : "LIVE_MODE_ACTIVE"}
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-[#2f2f2f] p-8 rounded-[2.5rem] border border-white/5 shadow-2xl space-y-6">
+          <div className="flex items-center justify-between px-2">
+            <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Neural Gateway Status</label>
+            <div className="flex gap-1">
+              {activeGateways.map((g, i) => (
+                <div key={i} className="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 rounded text-[8px] font-mono text-emerald-500 animate-pulse">
+                  {g}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest ml-1">Select Gateway</label>
+            <div className="grid grid-cols-3 gap-2">
+              {providers.map((p) => (
+                <button 
+                  key={p.id}
+                  onClick={() => setSelectedProvider(p.id)}
+                  className={cn(
+                    "p-3 rounded-xl border text-center transition-all",
+                    selectedProvider === p.id 
+                      ? "bg-emerald-500/10 border-emerald-500 text-white" 
+                      : "bg-black/40 border-white/5 text-zinc-500 hover:border-white/20"
+                  )}
+                >
+                  <div className="text-xs font-bold">{p.name}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest ml-1">Destination Number</label>
+            <div className="relative">
+              <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+              <input 
+                type="tel" 
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="+1 234 567 8900"
+                className="w-full bg-black border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-white focus:outline-none focus:border-emerald-500/50 transition-all"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest ml-1">Voice Modulation</label>
+            <div className="grid grid-cols-1 gap-2">
+              {voices.map((voice) => (
+                <button 
+                  key={voice.id}
+                  onClick={() => setSelectedVoice(voice.id)}
+                  className={cn(
+                    "flex items-center gap-4 p-4 rounded-2xl border transition-all text-left",
+                    selectedVoice === voice.id 
+                      ? "bg-emerald-500/10 border-emerald-500 text-white" 
+                      : "bg-black/40 border-white/5 text-zinc-400 hover:border-white/20"
+                  )}
+                >
+                  <span className="text-xl">{voice.icon}</span>
+                  <div className="flex-1">
+                    <div className="text-sm font-medium">{voice.name}</div>
+                    <div className="text-[10px] text-zinc-600 font-mono uppercase">{voice.id}</div>
+                  </div>
+                  {selectedVoice === voice.id && <Check size={16} className="text-emerald-500" />}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button 
+            onClick={handleCall}
+            disabled={isCalling || !phoneNumber}
+            className={cn(
+              "w-full py-5 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all shadow-xl",
+              isCalling || !phoneNumber 
+                ? "bg-zinc-800 text-zinc-600 cursor-not-allowed" 
+                : "bg-emerald-500 text-black hover:bg-emerald-400 hover:scale-[1.02]"
+            )}
+          >
+            {isCalling ? <Loader2 size={24} className="animate-spin" /> : <Phone size={24} />}
+            {isCalling ? "CONNECTING..." : "INITIATE NEURAL CALL"}
+          </button>
+
+          {callStatus && (
+            <div className="p-4 bg-black/60 rounded-xl border border-white/5 text-center">
+              <p className="text-xs font-mono text-emerald-500">{callStatus}</p>
+            </div>
+          )}
+
+          {neuralLogs.length > 0 && (
+            <div className="p-4 bg-black/40 rounded-xl border border-white/5 font-mono text-[10px] space-y-1 max-h-32 overflow-y-auto scrollbar-hide">
+              {neuralLogs.map((log, i) => (
+                <div key={i} className={cn(
+                  log.startsWith("[SUCCESS]") ? "text-emerald-500" : "text-zinc-500"
+                )}>
+                  {log}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-4 p-4 bg-amber-500/5 border border-amber-500/20 rounded-2xl">
+          <ShieldCheck size={20} className="text-amber-500 shrink-0" />
+          <p className="text-[10px] text-amber-200/60 leading-relaxed">
+            Ensure <code className="text-amber-400">TWILIO_ACCOUNT_SID</code> and <code className="text-amber-400">TWILIO_AUTH_TOKEN</code> are configured in your environment secrets before initiating calls.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState<'chat' | 'vision' | 'dashboard' | 'call' | 'twilio'>('chat');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  return (
+    <div className="flex h-screen w-full bg-[#212121] text-[#ececec] font-sans overflow-hidden">
+      {/* Sidebar */}
+      <motion.aside 
+        initial={false}
+        animate={{ width: isSidebarOpen ? 260 : 0, opacity: isSidebarOpen ? 1 : 0 }}
+        className="bg-[#171717] flex flex-col h-full border-r border-white/5 relative z-40 overflow-hidden"
+      >
+        <div className="p-3 flex flex-col h-full w-[260px]">
+          <button 
+            onClick={() => setActiveTab('chat')}
+            className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/5 transition-colors mb-2 group"
+          >
+            <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
+              <BrainCircuit size={16} className="text-black" />
+            </div>
+            <span className="text-sm font-medium">New Chat</span>
+            <div className="ml-auto p-1 rounded hover:bg-white/10">
+              <SquarePen size={14} className="text-zinc-500" />
+            </div>
+          </button>
+
+          <div className="flex-1 overflow-y-auto space-y-1 scrollbar-hide py-4">
+            <div className="px-3 mb-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Recent</div>
+            <button onClick={() => setActiveTab('chat')} className={cn("sidebar-item w-full", activeTab === 'chat' && "bg-white/10 text-white")}>
+              <MessageSquare size={16} />
+              <span className="truncate">Neural Link Session</span>
+            </button>
+            <button onClick={() => setActiveTab('vision')} className={cn("sidebar-item w-full", activeTab === 'vision' && "bg-white/10 text-white")}>
+              <Eye size={16} />
+              <span className="truncate">Vision Analysis</span>
+            </button>
+            <button onClick={() => setActiveTab('dashboard')} className={cn("sidebar-item w-full", activeTab === 'dashboard' && "bg-white/10 text-white")}>
+              <LayoutDashboard size={16} />
+              <span className="truncate">System Dashboard</span>
+            </button>
+            <button onClick={() => setActiveTab('call')} className={cn("sidebar-item w-full", activeTab === 'call' && "bg-white/10 text-white")}>
+              <Phone size={16} />
+              <span className="truncate">Ai Future Call</span>
+            </button>
+            <button onClick={() => setActiveTab('twilio')} className={cn("sidebar-item w-full", activeTab === 'twilio' && "bg-white/10 text-white")}>
+              <PhoneForwarded size={16} />
+              <span className="truncate">Twilio Voice</span>
+            </button>
+          </div>
+
+          <div className="pt-4 border-t border-white/5 space-y-1">
+            <button className="sidebar-item w-full">
+              <Settings size={16} />
+              <span>Settings</span>
+            </button>
+            <div className="sidebar-item w-full">
+              <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-[10px] font-bold text-black">U</div>
+              <span>User Profile</span>
+            </div>
+          </div>
+        </div>
+      </motion.aside>
+
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col relative h-full overflow-hidden">
+        {/* Top Header */}
+        <header className="h-14 flex items-center px-4 justify-between border-b border-white/5 bg-[#212121]/80 backdrop-blur-md sticky top-0 z-30">
+          <div className="flex items-center gap-2">
+            {!isSidebarOpen && (
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="p-2 hover:bg-white/5 rounded-lg text-zinc-400 transition-colors"
+              >
+                <PanelLeftOpen size={20} />
+              </button>
+            )}
+            <div className="flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group">
+              <span className="text-sm font-semibold text-zinc-200">Human AI 4.0</span>
+              <ChevronDown size={14} className="text-zinc-500 group-hover:text-zinc-300" />
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <button className="p-2 hover:bg-white/5 rounded-lg text-zinc-400 transition-colors">
+              <Share size={18} />
+            </button>
+          </div>
+        </header>
+
+        {/* Content Area */}
+        <div className="flex-1 overflow-y-auto scrollbar-hide">
+          <AnimatePresence mode="wait">
+            {activeTab === 'chat' && (
+              <motion.div 
+                key="chat"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="h-full flex flex-col"
+              >
+                <PicoConsole />
+              </motion.div>
+            )}
+            {activeTab === 'vision' && (
+              <motion.div 
+                key="vision"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <NeuralVision />
+              </motion.div>
+            )}
+            {activeTab === 'dashboard' && (
+              <motion.div 
+                key="dashboard"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <NeuralDashboard />
+              </motion.div>
+            )}
+            {activeTab === 'call' && (
+              <motion.div 
+                key="call"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <AiFutureVideoCall />
+              </motion.div>
+            )}
+            {activeTab === 'twilio' && (
+              <motion.div 
+                key="twilio"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="h-full"
+              >
+                <TwilioVoice />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Sidebar Toggle (Floating if closed) */}
+        {!isSidebarOpen && (
+          <button 
+            onClick={() => setIsSidebarOpen(true)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-[#2f2f2f] border border-white/10 rounded-full text-zinc-400 hover:text-white transition-all z-50 shadow-xl"
+          >
+            <PanelLeftOpen size={20} />
+          </button>
+        )}
+        {isSidebarOpen && (
+          <button 
+            onClick={() => setIsSidebarOpen(false)}
+            className="absolute left-[260px] top-1/2 -translate-y-1/2 p-2 bg-[#2f2f2f] border border-white/10 rounded-full text-zinc-400 hover:text-white transition-all z-50 shadow-xl -ml-5"
+          >
+            <PanelLeftClose size={20} />
+          </button>
+        )}
       </main>
-      <Footer />
     </div>
   );
 }
